@@ -1,5 +1,5 @@
 [project]
-name = "mcp-proxy"
+name = "sessionmcp"
 description = "A MCP server which proxies requests to a remote MCP server over SSE transport."
 authors = [{ name = "Sergey Parfenyuk", email = "sergey.parfenyuk@gmail.com" }]
 license = { file = "LICENSE" }
@@ -25,9 +25,12 @@ classifiers = [
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
-version = "0.5.0"
+version = "0.5.1"
 requires-python = ">=3.10"
-dependencies = ["mcp>=1.2.0,<2", "uvicorn>=0.34.0"]
+dependencies = [
+    "mcp[cli]>=1.2.0,<2",
+ "uvicorn>=0.34.0",
+]
 
 [build-system]
 requires = ["setuptools"]
@@ -40,8 +43,12 @@ Documentation = "https://github.com/sparfenyuk/mcp-proxy"
 Changelog = "https://github.com/sparfenyuk/mcp-proxy/releases"
 
 [project.scripts]
-mcp-proxy = "mcp_proxy.__main__:main"
-mcp-reverse-proxy = "mcp_proxy.__main__:client"
+sessionmcp = "sessionmcp.__main__:main"
+smcp = "sessionmcp.__main__:main"  # Shorter alias
+sessionmcp-enhanced = "sessionmcp.__main__:enhanced_main"  # Enhanced version
+mcp-reverse-proxy = "sessionmcp.__main__:client"
+# I haven't write reverse-proxy for sessioncmp yet, so I'm using mcp-proxy as a placeholder
+
 
 [tool.setuptools.package-data]
 "*" = ["py.typed"]

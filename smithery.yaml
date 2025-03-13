@@ -27,4 +27,4 @@ startCommand:
   commandFunction:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
-    (config) => { let command = ['mcp-proxy', config.commandOrUrl]; if (config.ssePort) command.push('--sse-port=' + config.ssePort); if (config.sseHost) command.push('--sse-host=' + config.sseHost); return { command: 'mcp-proxy', args: command, env: config.apiAccessToken ? { API_ACCESS_TOKEN: config.apiAccessToken, ...config.env } : config.env }; }
+    (config) => { let command = ['sessioncmp', config.commandOrUrl]; if (config.ssePort) command.push('--sse-port=' + config.ssePort); if (config.sseHost) command.push('--sse-host=' + config.sseHost); return { command: 'mcp-proxy', args: command, env: config.apiAccessToken ? { API_ACCESS_TOKEN: config.apiAccessToken, ...config.env } : config.env }; }
